@@ -23,17 +23,17 @@
 package org.shadowice.flocke.andotp.Activities;
 
 import android.os.Bundle;
-import com.google.android.material.tabs.TabLayout;
+import android.view.View;
+import android.view.ViewStub;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-import android.view.ViewStub;
 
+import com.google.android.material.tabs.TabLayout;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
 import org.shadowice.flocke.andotp.Fragments.AboutFragment;

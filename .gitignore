@@ -15,3 +15,9 @@ captures
 
 # OS files
 .DS_Store
+app/fdroid/debug/*
+app/fdroid/release/*
+app/play/debug/*
+app/play/release/*
+*.apk
+.gitignore.bak

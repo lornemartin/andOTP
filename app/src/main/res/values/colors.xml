@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#388E3C</color>                  <!-- material_green_700 -->
-    <color name="colorPrimaryDark">#00600F</color>
-    <color name="colorAccent">#FFCC00</color>
+    <color name="colorPrimary">#FF0C9592</color>                  <!-- material_green_700 -->
+    <color name="colorPrimaryDark">#0A7B79</color>
+    <color name="colorAccent">#FF0C9592</color>
 
     <color name="divider">#B6B6B6</color>
 
