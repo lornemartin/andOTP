@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2018 Jakob Nixdorf
- * Copyright (C) 2018 Daniel Weigl
+ * Copyright (C) 2018 Richy HBM
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +21,18 @@
  * SOFTWARE.
  */
 
-package org.shadowice.flocke.andotp.Utilities;
+package io.orbit.mobile.visionotp.Receivers;
 
-import junit.framework.TestCase;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 
-import io.orbit.mobile.visionotp.Utilities.Tools;
+import io.orbit.mobile.visionotp.Utilities.Settings;
 
-public class ToolsTest extends TestCase {
-   public void testFormatToken() throws Exception {
-      assertEquals("123 456", Tools.formatToken("123456", 3));
-      assertEquals("12 34 56", Tools.formatToken("123456", 2));
-      assertEquals("123456", Tools.formatToken("123456", 0));
-      assertEquals("123456", Tools.formatToken("123456", 10));
-      assertEquals("1 234 567", Tools.formatToken("1234567", 3));
-      assertEquals("1ab 234 567", Tools.formatToken("1ab234567", 3));
-      assertEquals("123", Tools.formatToken("123", 3));
-      assertEquals("1 234", Tools.formatToken("1234", 3));
-      assertEquals("1", Tools.formatToken("1", 3));
-      assertEquals("", Tools.formatToken("", 3));
-   }
+public abstract class BackupBroadcastReceiver extends BroadcastReceiver {
+
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    protected boolean canSaveBackup(Context context) {
+        Settings settings = new Settings(context);
+        return settings.isBackupLocationSet();
+    }
 }

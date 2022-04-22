@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2018 Jakob Nixdorf
- * Copyright (C) 2018 Daniel Weigl
+ * Copyright (C) 2020 Jakob Nixdorf
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +20,41 @@
  * SOFTWARE.
  */
 
-package org.shadowice.flocke.andotp.Utilities;
+package io.orbit.mobile.visionotp.View;
 
-import junit.framework.TestCase;
+import android.view.View;
 
-import io.orbit.mobile.visionotp.Utilities.Tools;
+public abstract class SimpleDoubleClickListener implements View.OnClickListener {
 
-public class ToolsTest extends TestCase {
-   public void testFormatToken() throws Exception {
-      assertEquals("123 456", Tools.formatToken("123456", 3));
-      assertEquals("12 34 56", Tools.formatToken("123456", 2));
-      assertEquals("123456", Tools.formatToken("123456", 0));
-      assertEquals("123456", Tools.formatToken("123456", 10));
-      assertEquals("1 234 567", Tools.formatToken("1234567", 3));
-      assertEquals("1ab 234 567", Tools.formatToken("1ab234567", 3));
-      assertEquals("123", Tools.formatToken("123", 3));
-      assertEquals("1 234", Tools.formatToken("1234", 3));
-      assertEquals("1", Tools.formatToken("1", 3));
-      assertEquals("", Tools.formatToken("", 3));
-   }
+    private static final long DOUBLE_CLICK_TIME_DELTA = 300; // Milliseconds
+
+    private long lastClickTime = 0;
+    private boolean firstTap = true;
+
+    @Override
+    public void onClick(View v) {
+        long clickTime = System.currentTimeMillis();
+
+        if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA) {
+            if (firstTap)
+                onDoubleClick(v);
+
+            firstTap = false;
+        } else {
+            firstTap = true;
+
+            v.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (firstTap)
+                        onSingleClick(v);
+                }
+            }, DOUBLE_CLICK_TIME_DELTA);
+        }
+
+        lastClickTime = clickTime;
+    }
+
+    public abstract void onSingleClick(View v);
+    public abstract void onDoubleClick(View v);
 }

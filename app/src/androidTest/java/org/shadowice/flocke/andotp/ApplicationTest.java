@@ -31,12 +31,12 @@ import org.apache.commons.codec.binary.Base32;
 import org.apache.commons.codec.binary.Hex;
 import org.json.JSONObject;
 import org.junit.Test;
-import org.shadowice.flocke.andotp.Database.Entry;
-import org.shadowice.flocke.andotp.Utilities.Constants;
-import org.shadowice.flocke.andotp.Utilities.DatabaseHelper;
-import org.shadowice.flocke.andotp.Utilities.EncryptionHelper;
-import org.shadowice.flocke.andotp.Utilities.KeyStoreHelper;
-import org.shadowice.flocke.andotp.Utilities.TokenCalculator;
+import io.orbit.mobile.visionotp.Database.Entry;
+import io.orbit.mobile.visionotp.Utilities.Constants;
+import io.orbit.mobile.visionotp.Utilities.DatabaseHelper;
+import io.orbit.mobile.visionotp.Utilities.EncryptionHelper;
+import io.orbit.mobile.visionotp.Utilities.KeyStoreHelper;
+import io.orbit.mobile.visionotp.Utilities.TokenCalculator;
 
 import java.io.File;
 import java.io.IOException;

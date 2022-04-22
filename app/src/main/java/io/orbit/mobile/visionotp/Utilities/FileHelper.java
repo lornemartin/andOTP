@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2018 Jakob Nixdorf
- * Copyright (C) 2018 Daniel Weigl
+ * Copyright (C) 2017-2020 Jakob Nixdorf
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +20,36 @@
  * SOFTWARE.
  */
 
-package org.shadowice.flocke.andotp.Utilities;
+package io.orbit.mobile.visionotp.Utilities;
 
-import junit.framework.TestCase;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-import io.orbit.mobile.visionotp.Utilities.Tools;
+class FileHelper {
+    static byte[] readFileToBytes(File file) throws IOException {
+        final InputStream in = new FileInputStream(file);
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int count;
+            while ((count = in.read(buffer)) != -1) {
+                bytes.write(buffer, 0, count);
+            }
+            return bytes.toByteArray();
+        } finally {
+            in.close();
+        }
+    }
 
-public class ToolsTest extends TestCase {
-   public void testFormatToken() throws Exception {
-      assertEquals("123 456", Tools.formatToken("123456", 3));
-      assertEquals("12 34 56", Tools.formatToken("123456", 2));
-      assertEquals("123456", Tools.formatToken("123456", 0));
-      assertEquals("123456", Tools.formatToken("123456", 10));
-      assertEquals("1 234 567", Tools.formatToken("1234567", 3));
-      assertEquals("1ab 234 567", Tools.formatToken("1ab234567", 3));
-      assertEquals("123", Tools.formatToken("123", 3));
-      assertEquals("1 234", Tools.formatToken("1234", 3));
-      assertEquals("1", Tools.formatToken("1", 3));
-      assertEquals("", Tools.formatToken("", 3));
-   }
+    static void writeBytesToFile(File file, byte[] data) throws IOException {
+        try (OutputStream out = new FileOutputStream(file)) {
+            out.write(data);
+        }
+    }
 }
+

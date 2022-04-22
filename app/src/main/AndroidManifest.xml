@@ -10,7 +10,7 @@
 
     <application
         android:allowBackup="true"
-        android:backupAgent=".Utilities.BackupAgent"
+        android:backupAgent="io.orbit.mobile.visionotp.Utilities.BackupAgent"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +19,7 @@
 
         <!-- TODO: Rework configuration changes to properly recreate the activity -->
         <activity
-            android:name=".Activities.MainActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|keyboard">
@@ -44,29 +44,29 @@
                        android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".Activities.AboutActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.AboutActivity"
+            android:parentActivityName="io.orbit.mobile.visionotp.Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.AuthenticateActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.AuthenticateActivity"
+            android:parentActivityName="io.orbit.mobile.visionotp.Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.BackupActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.BackupActivity"
+            android:parentActivityName="io.orbit.mobile.visionotp.Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.IntroScreenActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.IntroScreenActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName="io.orbit.mobile.visionotp.Activities.MainActivity"
             android:theme="@style/Theme.Intro.Solid" />
         <activity
-            android:name=".Activities.SettingsActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.SettingsActivity"
+            android:parentActivityName="io.orbit.mobile.visionotp.Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.SecureCaptureActivity" />
+        <activity android:name="io.orbit.mobile.visionotp.Activities.SecureCaptureActivity" />
         <activity
-            android:name=".Activities.PanicResponderActivity"
+            android:name="io.orbit.mobile.visionotp.Activities.PanicResponderActivity"
             android:launchMode="singleInstance"
             android:noHistory="true"
             android:theme="@android:style/Theme.NoDisplay">
@@ -76,13 +76,13 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".Receivers.PlainTextBackupBroadcastReceiver">
+        <receiver android:name="io.orbit.mobile.visionotp.Receivers.PlainTextBackupBroadcastReceiver">
             <intent-filter>
                 <action android:name="org.shadowice.flocke.andotp.broadcast.PLAIN_TEXT_BACKUP" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".Receivers.EncryptedBackupBroadcastReceiver">
+        <receiver android:name="io.orbit.mobile.visionotp.Receivers.EncryptedBackupBroadcastReceiver">
             <intent-filter>
                 <action android:name="org.shadowice.flocke.andotp.broadcast.ENCRYPTED_BACKUP" />
             </intent-filter>
